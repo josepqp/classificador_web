@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meat Type Classifier</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center">
+    <h1 class="text-2xl font-bold mb-4">Pork Meat Classifier</h1>
+    <input type="file" id="imageInput" accept="image/*" class="mb-4 block w-full text-sm">
+    <img id="preview" src="#" alt="Preview" class="mx-auto mb-4 hidden max-h-60 rounded-xl">
+    <button onclick="classifyImage()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl w-full">
+      Classify
+    </button>
+    <div id="result" class="mt-4 text-lg font-semibold"></div>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+    const result = document.getElementById('result');
+
+    imageInput.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+        result.textContent = '';
+      }
+    };
+
+    function classifyImage() {
+      // Placeholder logic – replace with real model/API
+      const fakeResult = Math.random() > 0.5 ? "Pork" : "Not Pork";
+      result.textContent = `Result: ${fakeResult}`;
+    }
+  </script>
+</body>
+</html>
