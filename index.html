@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meat Type Classifier</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center">
-    <h1 class="text-2xl font-bold mb-4">Pork Meat Classifier</h1>
+    
+    <!-- 🔵 Logo Coronis Computing -->
+    <img src="https://www.smartechcluster.org/wp-content/uploads/2024/04/Logos-web.png"
+         alt="Coronis Computing Logo"
+         class="h-16 mx-auto mb-4" />
+
+    <h1 class="text-2xl font-bold mb-4">Meat Type Classifier</h1>
+    
     <input type="file" id="imageInput" accept="image/*" class="mb-4 block w-full text-sm">
+    
     <img id="preview" src="#" alt="Preview" class="mx-auto mb-4 hidden max-h-60 rounded-xl">
+
     <button onclick="classifyImage()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl w-full">
       Classify
     </button>
+
     <div id="result" class="mt-4 text-lg font-semibold"></div>
   </div>
 
   <script>
+    const classes = [
+    "PEUS", "GARRO DE PERNIL", "GARROS PERNIL A/COTNA", "GARRO S/COTNA MD", "CUES CORTAS",
+    "CUES CORTAS MD", "CUES LARGUES MD", "CUES LARGUES", "OSSOS CUA", "OSSOS CUA TALLAT",
+    "COTNA 2ª", "GRASSA DURA", "GRASSA TOVA", "PUNTA JARRET Y GLADULAS", "OSSOS PONT",
+    "OSSOS FEMUR", "FEMUR A/OS", "MAGRE PONT( P3)", "MAGRE PONT( P4)", "MAGRE 90/10 P3",
+    "MAGRE 90/10 P4", "CONILLS", "MOUVAND MAGRE P4", "ARAÑA MAGRE P3", "ARAÑA MAGRE P4",
+    "PEIXET P3", "PEIXET", "JARRET", "JARRET 5D", "JARRET 6D", "APONEUROSIS", "REPROCESO",
+    "PERNIL S/PEU 14 A 15", "PERNIL S/PEU +12,5", "PERNIL S/PEU S/GENOLL", "PERNIL S/PEU S/GENOLL S/GARRO",
+    "PERNIL A/COTNA", "PERNIL A/ GRASSA", "PERNIL YORK", "PERNIL 4D BASIC", "PERNIL 4D P",
+    "PERNIL A/COTNA S/CULATA", "PERNIL A/COTNA S/CULATA S/CRUSTO", "PERNIL 5D / CRUSTO",
+    "PERNIL 5D / TAPA", "PERNIL 5D / CAP DE MORT", "PERNIL 5D / CULATA", "PERNIL 5D / BOLA Y CULATA MD",
+    "PERNIL 5D / TAPA Y CRUSTO DELISANO", "PERNIL 5D / CAP DE MORT DELISANO", "PERNIL 5D / CULATA DELISANO",
+    "PERNIL 6D / CRUSTO", "PERNIL 6D / TAPA", "PERNIL 6D / CAP DE MORT", "PERNIL 6D / CULATA",
+    "PERNIL 6D / CAP DE MORT 1/2(SOCIETE)", "PERNIL 6D / TAPA S/RODO (SOCIETE)", "PERNIL 6D / RODO (SOCIETE)",
+    "PERNIL 6D / CULATA S/ARAÑA", "PERNIL 6D / CULATA A/ARAÑA A/PEIXET", "JAMON 7D + / CRUSTO",
+    "JAMON 7D + / TAPA S/NERVI", "PERNIL 4D PIEZAS / CRUSTO", "PERNIL 4D PIEZAS / TAPA",
+    "PERNIL 4D PIEZAS / CAP DE MORT", "PERNIL 4D PIEZAS / CULATA", "PERNIL 4D PIEZAS / PERNIL 4D 2TALLS(TAPA Y JARRET)",
+    "PERNIL 4D PIEZAS / PERNIL 4D 2TALLS(BOLA Y CULATA)", "PERNIL 4D PIEZAS / PERNIL 4D 3TALLS(6 PECES)",
+    "PERNIL 4D PIEZAS / PERNIL 2 TALLS", "PERNIL 5D + / CRUSTO", "PERNIL 5D + / TAPA", "PERNIL 5D + / CAP DE MORT",
+    "PERNIL 5D + / CULATA", "PERNIL 5D + / CULATA Y PEIXET", "PERNIL 5D + / TAPA GRASA",
+    "PERNIL 6D + / CRUSTO", "PERNIL 6D + / TAPA", "PERNIL 6D + / CAP DE MORT", "PERNIL 6D + / CULATA",
+    "PERNIL 6D + / CULATA Y PEIXET", "PERNIL 6D + / TAPA GRASA", "PERNIL 6D + / CULATA S/ARAÑA"
+    ];
+
     const imageInput = document.getElementById('imageInput');
     const preview = document.getElementById('preview');
     const result = document.getElementById('result');
@@ -32,10 +66,10 @@
     };
 
     function classifyImage() {
-      // Placeholder logic – replace with real model/API
-      const fakeResult = Math.random() > 0.5 ? "Pork" : "Not Pork";
-      result.textContent = `Result: ${fakeResult}`;
+      const randomClass = classes[Math.floor(Math.random() * classes.length)];
+      result.textContent = `Result: ${randomClass}`;
     }
   </script>
 </body>
 </html>
+
